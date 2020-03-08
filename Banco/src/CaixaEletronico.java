@@ -1,3 +1,10 @@
+/*
+ * Simulação conta bancária simples
+ * Author : Lucas Bertoldo, Renata Malek, Washington Sidney
+ * Date : 05/03/2020
+ * Version : 1.0
+ */
+
 import javax.swing.JOptionPane;
 
 public class CaixaEletronico {
