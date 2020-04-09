@@ -52,27 +52,13 @@ public class Conta {
 				}
 				break;
 			case 5:
-				aux = Integer.parseInt(JOptionPane.showInputDialog(
-						"Escolha o período de histórico para emissão do extrato \n1 - Ultimas 24 horas \n2 - Ultimos 5 dias \n3 - "
-								+ "Ultimos 30 dias \n9 - Voltar menu anterior"));
-
-				if (aux == 1) {
-					historico.exibirHistorico(1);
-				} else if (aux == 2) {
-					historico.exibirHistorico(5);
-				} else if (aux == 3) {
-					historico.exibirHistorico(30);
-				} else {
-					JOptionPane.showMessageDialog(null, "INVALIDO, TENTE NOVAMENTE");
-				}
+				historico.exibirHistorico();
 				break;
 			case 9:
 				JOptionPane.showMessageDialog(null, "OPERAÇÃO FINALIZADA");
 				System.exit(0);
-				break;
 			default:
 				JOptionPane.showMessageDialog(null, "INVALIDO, ESCOLHA NOVAMENTE");
-				break;
 
 			}
 		}
@@ -86,8 +72,11 @@ public class Conta {
 		saldo -= valor;
 		JOptionPane.showMessageDialog(null, "Retire o valor");
 
-		Date data = new Date();
-		enviarSaque.historicoSaque(valor, data);
+		Date dia = new Date();
+
+		dia.getDate();
+
+		enviarSaque.recebeSaque(valor, dia);
 	}
 
 	public void deposito(double valor) {
@@ -97,8 +86,11 @@ public class Conta {
 		saldo += valor;
 		JOptionPane.showMessageDialog(null, "Depósito realizado");
 
-		Date data = new Date();
-		enviarDeposito.historicoDeposito(valor, data);
+		Date dia = new Date();
+
+		dia.getDate();
+
+		enviarDeposito.recebeDeposito(valor, dia);
 
 	}
 
@@ -109,19 +101,11 @@ public class Conta {
 		saldo -= valor;
 		JOptionPane.showMessageDialog(null, "Pagamento realizado");
 
-		Date data = new Date();
-		enviarPgto.historicoPagamento(valor, data);
+		Date dia = new Date();
 
-	}
+		dia.getDate();
 
-	public Calendar recebeData(double valor) {
-
-		Date data = new Date();
-		Calendar captar = new GregorianCalendar();
-
-		captar.setTime(data);
-
-		return (captar);
+		enviarPgto.recebePagamento(codigo, valor, dia);
 
 	}
 
